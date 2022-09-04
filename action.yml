@@ -40,9 +40,6 @@ runs:
         git clone "https://$API_TOKEN_GITHUB@github.com/${{ inputs.destination_repo }}.git" "$CLONE_DIR"
         cd "$CLONE_DIR"
         git checkout -b "${{ inputs.destination_head_branch }}"
-        git commit --message "Update from https://github.com/$GITHUB_REPOSITORY/commit/$GITHUB_SHA"
-        echo "Pushing git commit"
-        git push -u origin HEAD:${{ inputs.destination_head_branch }}
         echo "Creating a pull request"
         gh pr create -t ${{ inputs.destination_head_branch }} \
                      -b ${{ inputs.destination_head_branch }} \
