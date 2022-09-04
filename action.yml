@@ -45,7 +45,7 @@ runs:
                      -b ${{ inputs.destination_head_branch }} \
                      -B ${{ inputs.destination_base_branch }} \
                      -H ${{ inputs.destination_head_branch }} \
-                        ${{ inputs.pull_request_reviewers }}
+                        $PULL_REQUEST_REVIEWERS
       shell: bash
 
 branding:
