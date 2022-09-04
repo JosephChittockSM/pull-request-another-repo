@@ -19,7 +19,7 @@ runs:
   steps:
   
     - name: Generate PR on another repo
-      run:|
+      run: |
     
         if [ inputs.destination_head_branch == "main" ] || [ inputs.destination_head_branch == "master"]
         then
