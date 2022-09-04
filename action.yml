@@ -3,6 +3,9 @@ name: "Pull Request another repository"
 description: "Used for pull request on another repository"
 
 inputs:
+  destination_repo:
+    description: "The branch to create to push the changes. Cannot be master or main"
+    required: true
   destination_head_branch:
     description: "The branch to create to push the changes. Cannot be master or main"
     required: true
@@ -34,7 +37,7 @@ runs:
         echo "Setting git variables"
         export GITHUB_TOKEN=$API_TOKEN_GITHUB
         echo "Cloning destination git repository"
-        git clone "https://$API_TOKEN_GITHUB@github.com/$INPUT_DESTINATION_REPO.git" "$CLONE_DIR"
+        git clone "https://$API_TOKEN_GITHUB@github.com/${{ inputs.destination_repo }}.git" "$CLONE_DIR"
         cd "$CLONE_DIR"
         git checkout -b "${{ inputs.destination_head_branch }}"
         echo "Adding git commit"
