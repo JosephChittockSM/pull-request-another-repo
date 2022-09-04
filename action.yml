@@ -1,0 +1,23 @@
+name: 'Pull Request another repository'
+description: 'Used for pull request on another repository'
+inputs:
+  destination_head_branch:
+    description: 'The branch to create to push the changes. Cannot be master or main'
+    required: true
+  destination_base_branch:
+    description: 'The branch into which you want your code merged.'
+    required: true
+    default: "main"
+  pull_request_reviewers:
+    description: 'Pull request reviewers users'
+    required: false
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.destination-head-branch }}
+    - ${{ inputs.destination-base-branch }}
+    - ${{ inputs.pull-request-reviewers }}
+branding:
+  icon: 'git-commit'
+  color: 'green'
